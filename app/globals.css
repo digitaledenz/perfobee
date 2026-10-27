@@ -1,0 +1,315 @@
+
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* PERFOBEE LIGHT THEME */
+:root {
+  --background: #fffdf9;
+  --foreground: #171311;
+
+  --brand-primary: #b96510;
+  --brand-secondary: #dc8721;
+  --brand-deep: #9c500d;
+
+  --surface: #ffffff;
+  --surface-border: #efdfce;
+  --text-muted: #756d66;
+
+  --brand-gradient: linear-gradient(
+    110deg,
+    #9c500d 0%,
+    #c57217 38%,
+    #e39124 68%,
+    #b45b0e 100%
+  );
+}
+
+/* PERFOBEE DARK THEME */
+.dark {
+  --background: #100e0d;
+  --foreground: #fffaf4;
+
+  --brand-primary: #d88a27;
+  --brand-secondary: #f0ac49;
+  --brand-deep: #ad6419;
+
+  --surface: #1c1917;
+  --surface-border: #433227;
+  --text-muted: #b9aaa0;
+
+  --brand-gradient: linear-gradient(
+    110deg,
+    #aa601a 0%,
+    #d88a27 45%,
+    #f0ac49 75%,
+    #c07824 100%
+  );
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand: var(--brand-primary);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Gradient text matching brand */
+.brand-gradient-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Primary CTA button */
+.brand-button {
+  background: var(--brand-gradient);
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(181, 94, 14, 0.2);
+  transition:
+    box-shadow 250ms ease,
+    transform 250ms ease;
+}
+
+.brand-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(181, 94, 14, 0.3);
+}
+
+/* Premium website frame */
+.perfobee-frame {
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
+  border-radius: 24px;
+  box-shadow: 0 24px 80px rgba(115, 62, 19, 0.08);
+}
+
+/* Soft hero lighting */
+.perfobee-glow {
+  background:
+    radial-gradient(
+      ellipse at 72% 30%,
+      rgba(235, 170, 91, 0.20),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 20% 90%,
+      rgba(194, 104, 28, 0.13),
+      transparent 55%
+    );
+}
+
+.dark .perfobee-glow {
+  background:
+    radial-gradient(
+      ellipse at 72% 30%,
+      rgba(218, 113, 26, 0.16),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 20% 90%,
+      rgba(158, 69, 14, 0.18),
+      transparent 55%
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .brand-button {
+    transition: none;
+  }
+
+  .brand-button:hover {
+    transform: none;
+  }
+}
+
+/*==========================================
+ CRM Dashboard Css Start Here
+===========================================*/
+
+/* Premium floating dashboard effect */
+
+@keyframes perfobeeFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.dashboard-float {
+  animation: perfobeeFloat 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-float {
+    animation: none;
+    will-change: auto;
+  }
+}
+
+
+/* Premium hero dashboard refinement */
+
+.dashboard-float {
+  animation: perfobeeFloat 8s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.dashboard-float > div {
+  transition:
+    box-shadow 350ms ease,
+    border-color 350ms ease;
+}
+
+@media (hover: hover) and (min-width: 1024px) {
+  .dashboard-float:hover > div {
+    box-shadow: 0 35px 90px rgba(128, 73, 28, 0.2);
+  }
+
+  .dark .dashboard-float:hover > div {
+    box-shadow: 0 35px 90px rgba(0, 0, 0, 0.55);
+  }
+}
+
+@media (max-width: 1023px) {
+  .dashboard-float {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-float {
+    animation: none;
+  }
+}
+
+
+/*==========================================
+ CRM Dashboard Css End Here
+===========================================*/
+
+
+
+/* ==========================================
+   PERFOBEE PREMIUM SCROLLBAR
+   Light + Dark Theme
+========================================== */
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #c57217 #f7ebde;
+}
+
+html.dark {
+  scrollbar-color: #d88a27 #211a16;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f7ebde;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #9c500d 0%,
+    #c57217 45%,
+    #e39124 100%
+  );
+  border: 2px solid #f7ebde;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9c500d;
+}
+
+/* Dark Mode */
+.dark ::-webkit-scrollbar-track {
+  background: #211a16;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    #a75b18 0%,
+    #d88a27 55%,
+    #f0ac49 100%
+  );
+  border: 2px solid #211a16;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #f0ac49;
+}
+
+/* Horizontal scrollbar */
+::-webkit-scrollbar:horizontal {
+  height: 7px;
+}
+
+/* ==========================================
+   PERFOBEE PREMIUM SCROLLBAR END
+   Light + Dark Theme
+========================================== */
+
+
+/* PerfoBee premium section reveal */
+
+@keyframes perfobeeReveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal.is-visible {
+  animation: perfobeeReveal 650ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal.is-visible {
+    animation: none;
+  }
+}
+
+/* Prevent submenu focus outlines being clipped */
+#mobile-menu a:focus-visible,
+#mobile-menu button:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: -2px;
+}
+
+
